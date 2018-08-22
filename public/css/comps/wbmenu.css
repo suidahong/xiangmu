@@ -1,0 +1,24 @@
+body{
+	background: #CFD5DA;
+}
+.level1{
+	height: 42px;
+	line-height: 42px;
+	color: black;
+	cursor: pointer;
+	//width: 150px;
+}
+.divider{
+	//border-bottom: solid 1px white;
+}
+.level2{
+	height: 30px;
+	line-height: 30px;
+	color: black;
+	cursor: pointer;
+	background: #E2E6E9;
+	font-size: 12px;
+}
+.hidden2 {
+    display: none;
+}

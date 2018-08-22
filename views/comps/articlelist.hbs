@@ -1,0 +1,39 @@
+{{css '/css/comps/articlelist.css'}}
+{{> navbreadcrumb}}
+<div id="content-warp">
+<script id ="todolist-template" type="text/x-handlebars-template">
+\{{#each this}}
+<div class="row row-item">
+	<div class="col-xs-9 ">
+		<div class="todo-title"><a target="_blank" href="/articledetail?id=\{{id}}">\{{title}}</a></div>
+	</div>
+	<div class="col-xs-3 text-right todo-date">
+		<div class="text-right">\{{week}}</div>
+		<div class="text-right">\{{date}}</div>
+	</div>
+</div>
+\{{/each}}
+</script>
+</div>
+<input id="url" type="hidden" value="{{url}}"/>
+{{#section 'getdatalist'}}
+<script type="text/javascript">
+$(document).ready(function(){
+	var url = $("#url").val();
+	if (!!!url) {
+		url = "http://127.0.0.1:8083/portal/ws/todo/notice/list";
+	}
+	$.ajax({
+		url: url,
+		method: "get",
+		dataType: "json",
+		success: function(_data) {
+			var source = $("#todolist-template").html();
+			var ceshiTemplate = Handlebars.compile(source);
+			$("#content-warp").html(ceshiTemplate(_data));
+		}
+	});
+}); 
+</script>
+{{/section}}
+{{{_sections.getdatalist}}}

@@ -1,0 +1,78 @@
+{{css '/css/comps/tododetail.css'}}
+{{> navbreadcrumb}}
+<div id="tododetail-warp">
+<script id ="todo-detail-template" type="text/x-handlebars-template">
+	<div class="page-header">
+		<h3>申请人信息</h3>
+	</div>
+	<div class="row text-center">
+		<div class="col-xs-4 text-right">申请人:</div>
+		<div class="col-xs-8 text-left">\{{name}}</div>
+	</div>
+	<div class="row text-center">
+		<div class="col-xs-4 text-right">申请部门:</div>
+		<div class="col-xs-8 text-left">\{{org}}</div>
+	</div>
+	<div class="row text-center">
+		<div class="col-xs-4 text-right">申请类型:</div>
+		<div class="col-xs-8 text-left">\{{type}}</div>
+	</div>
+	<div class="row text-center">
+		<div class="col-xs-4 text-right">申请理由:</div>
+		<div class="col-xs-8 text-left">\{{reason}}</div>
+	</div>
+	<br>
+	\{{#equal status 1}}
+	<div class="row">
+	<div class="col-xs-4 text-right"><button class="btn btn-success btn-agree" type="button">同意</button></div>
+	<div class="col-xs-8 text-left"><button class="btn btn-danger btn-reject" type="button">驳回</button></div>
+	</div>
+	\{{/equal}}
+</script>
+</div>
+
+<input id="detailId" type="hidden" value="{{id}}"/>
+
+{{#section 'getArticleDetail'}}
+<script type="text/javascript">
+$(document).ready(function(){
+	var id = $("#detailId").val();
+	$.ajax({
+		url: "http://127.0.0.1:8083/portal/ws/todo/todo/detail?id="+id,
+		method: "get",
+		dataType: "json",
+		success: function(_data) {
+			var source = $("#todo-detail-template").html();
+			var ceshiTemplate = Handlebars.compile(source);
+			$("#tododetail-warp").html(ceshiTemplate(_data));
+			addClick(id);
+		}
+	});
+});
+function addClick(id) {
+	$(".btn-agree").click(function(){
+		$.ajax({
+			url: "http://127.0.0.1:8083/portal/ws/todo/todo/opt?type=1&id="+id,
+			method: "get",
+			dataType: "json",
+			success: function() {
+				alert("同意操作成功");
+				setTimeout("window.close()", 500);
+			}
+		});
+	});
+	$(".btn-reject").click(function(){
+		$.ajax({
+			url: "http://127.0.0.1:8083/portal/ws/todo/todo/opt?type=2&id="+id,
+			method: "get",
+			dataType: "json",
+			success: function() {
+				alert("驳回操作成功");
+				setTimeout("window.close()", 500);
+			}
+		});
+	});
+}
+</script>
+{{/section}}
+{{{_sections.getArticleDetail}}}

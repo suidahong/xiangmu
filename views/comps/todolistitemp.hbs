@@ -1,0 +1,45 @@
+{{css '/css/comps/todolistitemp.css'}}
+<div id="content-warp">
+<script id ="todolist-template" type="text/x-handlebars-template">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>代办事项</th>
+      <th>日期</th>
+    </tr>
+  </thead>
+  <tbody>
+  \{{#each this}}
+    <tr>
+      <td>\{{index}}</td>
+      <td><a target="_blank" href="/tododetail?id=\{{id}}">\{{title}}</a></td>
+      <td>\{{date}}</td>
+    </tr>
+\{{/each}}
+  </tbody>
+</table>
+</script>
+</div>
+<input id="url" type="hidden" value="{{url}}"/>
+{{#section 'getdatalist'}}
+<script type="text/javascript">
+$(document).ready(function(){
+	var url = $("#url").val();
+	if (!!!url) {
+		url = "http://127.0.0.1:8083/portal/ws/todo/notice/list";
+	}
+	$.ajax({
+		url: url,
+		method: "get",
+		dataType: "json",
+		success: function(_data) {
+			var source = $("#todolist-template").html();
+			var ceshiTemplate = Handlebars.compile(source);
+			$("#content-warp").html(ceshiTemplate(_data));
+		}
+	});
+}); 
+</script>
+{{/section}}
+{{{_sections.getdatalist}}}

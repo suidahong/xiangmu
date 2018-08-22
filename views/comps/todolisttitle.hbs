@@ -1,0 +1,11 @@
+{{js '/js/comps/todolisttitle.js'}}
+{{css '/css/comps/todolisttitle.css'}}
+<div class="row row-title">
+	<div class="col-xs-4 todolist-title text-right">{{title}}</div>
+	<div class="col-xs-8 text-left more">
+	{{#if hidemore}}
+	{{^}}
+	<a class="btn btn-default" target="_blank" href="/{{list}}" role="button">更多...</a>
+	{{/if}}
+	</div>
+</div>
