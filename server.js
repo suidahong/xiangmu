@@ -58,6 +58,7 @@ app.use('/header', require('./routes/header'));
 app.use('/tododetail', require('./routes/tododetail'));
 app.use('/todolistp', require('./routes/todolistp'));
 app.use('/finishedlistp', require('./routes/finishedlistp'));
+app.use('/carousel', require('./routes/carousel'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
