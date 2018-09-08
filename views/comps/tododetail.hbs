@@ -2,30 +2,68 @@
 {{> navbreadcrumb}}
 <div id="tododetail-warp">
 <script id ="todo-detail-template" type="text/x-handlebars-template">
-	<div class="page-header">
-		<h3>申请人信息</h3>
+	<div class="page-header row">
+		<div class="col-xs-4"></div>
+		<div class="col-xs-4 text-left"><h3>申请人信息</h3></div>
+		<div class="col-xs-4"></div>
 	</div>
+
 	<div class="row text-center">
-		<div class="col-xs-4 text-right">申请人:</div>
-		<div class="col-xs-8 text-left">\{{name}}</div>
+		<div class="col-xs-4"></div>
+		<div class="col-xs-4">
+			<div class="input-group">
+			  <span class="input-group-addon" id="basic-addon1">申&nbsp;&nbsp;请&nbsp;&nbsp;人:</span>
+			  <input type="text" class="form-control" disabled value="\{{name}}" aria-describedby="basic-addon1">
+			</div>
+		</div>
+		<div class="col-xs-4"></div>
 	</div>
+	<br/>
 	<div class="row text-center">
-		<div class="col-xs-4 text-right">申请部门:</div>
-		<div class="col-xs-8 text-left">\{{org}}</div>
+		<div class="col-xs-4"></div>
+		<div class="col-xs-4">
+			<div class="input-group">
+			  <span class="input-group-addon" id="basic-addon1">申请部门:</span>
+			  <input type="text" class="form-control" disabled value="\{{org}}" aria-describedby="basic-addon1">
+			</div>
+		</div>
+		<div class="col-xs-4"></div>
 	</div>
+	<br/>
 	<div class="row text-center">
-		<div class="col-xs-4 text-right">申请类型:</div>
-		<div class="col-xs-8 text-left">\{{type}}</div>
+		<div class="col-xs-4"></div>
+		<div class="col-xs-4">
+			<div class="input-group">
+			  <span class="input-group-addon" id="basic-addon1">申请类型:</span>
+			  <input type="text" class="form-control" disabled value="\{{type}}" aria-describedby="basic-addon1">
+			</div>
+		</div>
+		<div class="col-xs-4"></div>
 	</div>
+	<br/>
 	<div class="row text-center">
-		<div class="col-xs-4 text-right">申请理由:</div>
-		<div class="col-xs-8 text-left">\{{reason}}</div>
+		<div class="col-xs-4"></div>
+		<div class="col-xs-4">
+			<div class="input-group">
+			  <span class="input-group-addon" id="basic-addon1">申请理由:</span>
+			  <input type="text" class="form-control" disabled value="\{{reason}}" aria-describedby="basic-addon1">
+			</div>
+		</div>
+		<div class="col-xs-4"></div>
 	</div>
 	<br>
 	\{{#equal status 1}}
 	<div class="row">
-	<div class="col-xs-4 text-right"><button class="btn btn-success btn-agree" type="button">同意</button></div>
-	<div class="col-xs-8 text-left"><button class="btn btn-danger btn-reject" type="button">驳回</button></div>
+	<div class="col-xs-5">
+	</div>
+	<div class="col-xs-1 text-left">
+	<button class="btn btn-success btn-agree" type="button">同意</button>
+	</div>
+	<div class="col-xs-1 text-right">
+	<button class="btn btn-danger btn-reject" type="button">驳回</button>
+	</div>
+	<div class="col-xs-5">
+	</div>
 	</div>
 	\{{/equal}}
 </script>
