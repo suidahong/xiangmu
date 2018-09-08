@@ -4,6 +4,7 @@ var express = require('express');
 var path = require('path');
 var hbs = require('hbs');
 var bodyParser = require('body-parser');
+var sassMiddleware = require('node-sass-middleware');
 
 var app = express();
 
@@ -35,9 +36,21 @@ hbs.registerHelper('section', function(name, block){
 
 hbs.registerPartials(__dirname + '/views/comps');
 
+
+app.use(sassMiddleware({
+    /* Options */
+    src: path.join(__dirname, 'public/scss'),
+    //src: __dirname,
+    dest: path.join(__dirname, 'public/css'),
+    debug: true,
+    //log: function (severity, key, value) { winston.log(severity, 'node-saas-middleware   %s : %s', key, value);},
+    //outputStyle: 'compressed',
+    prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 
 app.get('/', function (req, res) {
     res.render('home');

@@ -1,3 +1,5 @@
+@import '../common.scss';
+
 .row{
 	height: 30px;
 	line-height: 30px;
@@ -5,5 +7,5 @@
 .alarm-danger{
 	background: #F9DBDB;
 	font-size: 14px;
-	color: #D07274;
+	color: $red1;
 }
