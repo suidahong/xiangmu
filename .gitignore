@@ -1,3 +1,4 @@
 /node_modules/
 /public/css/comps/
 .DS_Store
+/public/css/default.css

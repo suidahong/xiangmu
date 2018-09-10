@@ -1,11 +1,13 @@
-@import '../common.scss';
+@import '../variables.scss';
 
-.row{
+.alarm{
+	.row{
 	height: 30px;
 	line-height: 30px;
-}
-.alarm-danger{
-	background: #F9DBDB;
-	font-size: 14px;
-	color: $red1;
+	}
+	.alarm-danger{
+		background: #F9DBDB;
+		font-size: 15px;
+		color: $red1;
+	}
 }

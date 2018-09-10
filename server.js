@@ -4,7 +4,7 @@ var express = require('express');
 var path = require('path');
 var hbs = require('hbs');
 var bodyParser = require('body-parser');
-var sassMiddleware = require('node-sass-middleware');
+
 
 var app = express();
 
@@ -37,16 +37,6 @@ hbs.registerHelper('section', function(name, block){
 hbs.registerPartials(__dirname + '/views/comps');
 
 
-app.use(sassMiddleware({
-    /* Options */
-    src: path.join(__dirname, 'public/scss'),
-    //src: __dirname,
-    dest: path.join(__dirname, 'public/css'),
-    debug: true,
-    //log: function (severity, key, value) { winston.log(severity, 'node-saas-middleware   %s : %s', key, value);},
-    //outputStyle: 'compressed',
-    prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
-}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -57,21 +47,7 @@ app.get('/', function (req, res) {
 });
 
 // Add comtus router
-app.use('/todolist', require('./routes/todolist'));
-app.use('/finishedlist', require('./routes/finishedlist'));
-app.use('/noticelist', require('./routes/noticelist'));
-app.use('/wbmenu', require('./routes/wbmenu'));
-app.use('/wbchart', require('./routes/wbchart'));
-app.use('/wbcharttitle', require('./routes/wbcharttitle'));
-app.use('/shortcutmenu', require('./routes/shortcutmenu'));
 app.use('/alarm', require('./routes/alarm'));
-app.use('/articledetail', require('./routes/articledetail'));
-app.use('/articlelist', require('./routes/articlelist'));
-app.use('/header', require('./routes/header'));
-app.use('/tododetail', require('./routes/tododetail'));
-app.use('/todolistp', require('./routes/todolistp'));
-app.use('/finishedlistp', require('./routes/finishedlistp'));
-app.use('/carousel', require('./routes/carousel'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
