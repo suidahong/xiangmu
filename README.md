@@ -1,13 +1,13 @@
 1.安装，切到工程目录下，执行
-# npm install
-想要全局安装可使用-g参数
+# npm install -g
 2.运行
-2.1.sass编译和合并，执行
+2.1.运行监控程序，sass编译和合并，执行
 # gulp server
 2.2.运行前台程序，执行
-# npm start
-开发模式
-# DEBUG=express:* npm start
+设置别名
+# alias supervisor='supervisor -e "node|hbs|js|css" -w .'
+启动
+# supervisor server.js
 3.开发规约
 3.1.目录结构
 /views，存放的是页面
